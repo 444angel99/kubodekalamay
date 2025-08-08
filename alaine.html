@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buko de Kalamay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+--primary-green: #4a6b3a;
+--secondary-green: #678f54;
+--light-green: #e8f0e3;
+--primary-brown: #6b4423;
+--secondary-brown: #8d6b51;
+--light-brown: #f0e6d9;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Poppins', sans-serif;
+color: var(--primary-brown);
+background-color: var(--light-green);
+line-height: 1.6;
+}
+
+h1, h2, h3 {
+font-family: 'Playfair Display', serif;
+font-weight: 700;
+color: var(--primary-green);
+}
+
+.navbar {
+background-color: var(--primary-green);
+padding: 1rem 2rem;
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+.logo {
+font-family: 'Playfair Display', serif;
+font-size: 1.8rem;
+color: white;
+text-decoration: none;
+}
+
+.nav-links {
+display: flex;
+gap: 2rem;
+}
+
+.nav-links a {
+color: white;
+text-decoration: none;
+font-weight: 400;
+transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+color: var(--light-green);
+}
+
+.hero {
+height: 90vh;
+background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+url('kubs.jpg') center/cover no-repeat;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+color: white;
+padding: 0 2rem;
+}
+
+.hero h1 {
+font-size: 4rem;
+margin-bottom: 1rem;
+color: white;
+}
+
+.hero p {
+font-size: 1.2rem;
+max-width: 700px;
+}
+
+.btn {
+display: inline-block;
+background-color: var(--primary-green);
+color: white;
+padding: 0.8rem 2rem;
+border: none;
+border-radius: 5px;
+text-decoration: none;
+font-size: 1rem;
+margin-top: 2rem;
+transition: all 0.3s ease;
+}
+
+.btn:hover {
+background-color: var(--secondary-green);
+transform: translateY(-3px);
+}
+
+.section {
+padding: 5rem 2rem;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+.section-title {
+text-align: center;
+margin-bottom: 3rem;
+font-size: 2.5rem;
+}
+
+.about {
+background-color: white;
+}
+
+.about-content {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 3rem;
+align-items: center;
+}
+
+.about-img {
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.about-img img {
+width: 100%;
+height: auto;
+display: block;
+}
+
+.products {
+background-color: var(--light-brown);
+}
+
+.product-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+}
+
+.product-card {
+background-color: white;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+transition: all 0.3s ease;
+}
+
+.product-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.product-img {
+height: 250px;
+overflow: hidden;
+}
+
+.product-img img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: all 0.5s ease;
+}
+
+.product-card:hover .product-img img {
+transform: scale(1.1);
+}
+
+.product-info {
+padding: 1.5rem;
+}
+
+.product-info h3 {
+margin-bottom: 0.5rem;
+}
+
+.product-info p {
+margin-bottom: 1rem;
+}
+
+.price {
+font-weight: 600;
+color: var(--primary-green);
+font-size: 1.2rem;
+}
+
+.process {
+background-color: white;
+}
+
+.process-steps {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 2rem;
+}
+
+.step {
+text-align: center;
+padding: 2rem;
+}
+
+.step-number {
+width: 50px;
+height: 50px;
+background-color: var(--primary-green);
+color: white;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0 auto 1rem;
+font-size: 1.5rem;
+font-weight: bold;
+}
+
+.faq {
+background-color: var(--light-brown);
+}
+
+.faq-item {
+margin-bottom: 1rem;
+border-bottom: 1px solid var(--light-green);
+padding-bottom: 1rem;
+}
+
+.faq-question {
+font-weight: 600;
+margin-bottom: 0.5rem;
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.faq-answer {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease;
+}
+
+.faq-answer.active {
+max-height: 300px;
+}
+
+.budget {
+background-color: white;
+}
+
+.budget-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 2rem;
+}
+
+.budget-table th,
+.budget-table td {
+padding: 1rem;
+text-align: left;
+border-bottom: 1px solid var(--light-green);
+}
+
+.budget-table th {
+background-color: var(--primary-green);
+color: white;
+}
+
+.budget-table tr:nth-child(even) {
+background-color: var(--light-green);
+}
+
+.contact {
+background-color: var(--primary-green);
+color: white;
+}
+
+.contact-form {
+max-width: 600px;
+margin: 0 auto;
+}
+
+.form-group {
+margin-bottom: 1.5rem;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+width: 100%;
+padding: 0.8rem;
+border: none;
+border-radius: 5px;
+font-family: inherit;
+}
+
+.form-group textarea {
+height: 150px;
+}
+
+footer {
+background-color: var(--primary-brown);
+color: white;
+text-align: center;
+padding: 2rem;
+}
+
+@media (max-width: 768px) {
+.about-content {
+grid-template-columns: 1fr;
+}
+
+.hero h1 {
+font-size: 2.5rem;
+}
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+<div class="nav-container">
+<a href="#" class="logo">Buko de Kalamay</a>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#products">Products</a>
+<a href="#process">Process</a>
+<a href="#budget">Budget</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<section class="hero">
+<h1>Authentic Filipino Kalamay Delicacies</h1>
+<p>Preserving tradition, one sweet bite at a time. Our handcrafted kalamay products are made with love using time-honored Filipino techniques and the finest local ingredients.</p>
+<a href="#products" class="btn">Our Products</a>
+</section>
+
+<section id="about" class="section about">
+<h2 class="section-title">Our Story</h2>
+<div class="about-content">
+<div>
+<h3>A Taste of Heritage</h3>
+<p>Buko de Kalamay was born from a family tradition of kalamay-making in Bulacan. But it is actually rare to see Kalamay vendors here in our area. We were inspired to start a Kalamay business because it is a tasty traditional treat that many people love and accessed.</p>
+<p>Today, we honor the Filipino delicacy of our favorite Kalama so we can also share it to each and everyone in Balingasag Misamis Oriental!</p>
+<h3>The Kalamay Tradition</h3>
+<p>Kalamay is a cherished Filipino delicacy made from glutinous rice flour, coconut milk, and muscovado sugar. The painstaking process of slow-cooking and constant stirring results in a uniquely sticky, sweet treat that's beloved across the islands.</p>
+<p>Our version incorporates fresh buko (young coconut) for added texture and flavor, making it distinct from commercial varieties.</p>
+</div>
+<div class="about-img">
+<img src="bok.jpg" alt="Traditional Filipino kubo with bamboo walls surrounded by coconut trees, sunlight filtering through - peaceful rural setting for traditional kalamay production" />
+</div>
+</div>
+</section>
+
+<section id="products" class="section products">
+<h2 class="section-title">Our Products</h2>
+<div class="product-grid">
+<div class="product-card">
+<div class="product-img">
+<img src="kal.jpg" alt="Traditional kalamay in banana leaf wrap showing sticky texture with coconut shreds, garnished with latik (coconut caramel)" />
+</div>
+<div class="product-info">
+<h3>Classic Buko Kalamay</h3>
+<p>The original recipe with fresh buko strips, wrapped in banana leaf for authentic flavor. Perfect for family gatherings.</p>
+<p class="price">₱120 per 250g pack</p>
+<a href="#" class="btn">Order Now</a>
+</div>
+</div>
+<div class="product-card">
+<div class="product-img">
+<img src="ubee.jpg" alt="Kalamay with ube (purple yam) swirl, vibrant purple and brown colors in clay pot presentation" />
+</div>
+<div class="product-info">
+<h3>Ube Kalamay Fusion</h3>
+<p>Traditional kalamay infused with rich ube halaya, creating a beautiful purple-brown marbled effect.</p>
+<p class="price">₱150 per 250g pack</p>
+<a href="#" class="btn">Order Now</a>
+</div>
+</div>
+<div class="product-card">
+<div class="product-img">
+<img src="bites.jpg" alt="Mini kalamay bites in bamboo serving trays with pandan leaves as garnish for festival presentation" />
+</div>
+<div class="product-info">
+<h3>Kalamay Bites</h3>
+<p>Mini versions of our classic kalamay, perfect for parties and gifts. Comes in assorted flavors.</p>
+<p class="price">₱200 per 20-piece box</p>
+<a href="#" class="btn">Order Now</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="process" class="section process">
+<h2 class="section-title">Our Traditional Process</h2>
+<div class="process-steps">
+<div class="step">
+<div class="step-number">1</div>
+<h3>Harvest</h3>
+<p>Fresh coconuts are harvested at peak ripeness from local farms in Quezon province.</p>
+</div>
+<div class="step">
+<div class="step-number">2</div>
+<h3>Preparation</h3>
+<p>Glutinous rice is soaked overnight, then ground with fresh coconut milk.</p>
+</div>
+<div class="step">
+<div class="step-number">3</div>
+<h3>Cooking</h3>
+<p>The mixture is slow-cooked in traditional kawali (woks) for 4-6 hours with constant stirring.</p>
+</div>
+<div class="step">
+<div class="step-number">4</div>
+<h3>Packaging</h3>
+<p>Hand-wrapped in banana leaves or eco-friendly packaging for authentic presentation.</p>
+</div>
+</div>
+</section>
+
+<section id="ingredients" class="section">
+<h2 class="section-title">Quality Ingredients</h2>
+<div class="process-steps">
+<div class="step">
+<div class="step-img">
+<h3>Premium Coconuts</h3>
+<p>Sourced from organic farms in Laguna and Quezon, ensuring rich flavor.</p>
+</div>
+<div class="step">
+<div class="step-img">
+</div>
+<h3>Muscovado Sugar</h3>
+<p>Unrefined sugar from Negros Occidental, adding depth of flavor.</p>
+</div>
+<div class="step">
+<div class="step-img">
+</div>
+<h3>Glutinous Rice</h3>
+<p>High-quality malagkit rice from Ifugao terraces, stone-ground fresh.</p>
+</div>
+<div class="step">
+<div class="step-img">
+</div>
+<h3>Pandan Leaves</h3>
+<p>Freshly picked for natural aroma and subtle flavor enhancement.</p>
+</div>
+</div>
+</section>
+
+<section id="budget" class="section budget">
+<h2 class="section-title">Production Budget</h2>
+<div class="budget-container">
+<h3>Small Batch Production (50kg/month)</h3>
+<table class="budget-table">
+<thead>
+<tr>
+<th>Item</th>
+<th>Monthly Cost</th>
+<th>Unit Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Glutinous Rice (25kg)</td>
+<td>₱2,500</td>
+<td>₱100/kg</td>
+</tr>
+<tr>
+<td>Coconut Milk (150 coconuts)</td>
+<td>₱3,000</td>
+<td>₱20/coconut</td>
+</tr>
+<tr>
+<td>Muscovado Sugar (15kg)</td>
+<td>₱1,800</td>
+<td>₱120/kg</td>
+</tr>
+<tr>
+<td>Banana Leaves</td>
+<td>₱500</td>
+<td>₱5/pack</td>
+</tr>
+<tr>
+<td>Labor (2 workers)</td>
+<td>₱10,000</td>
+<td>₱200/day</td>
+</tr>
+<tr>
+<td>Packaging</td>
+<td>₱1,500</td>
+<td>₱20/unit</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>₱19,300</strong></td>
+<td><strong>₱386/kg</strong></td>
+</tr>
+</tbody>
+</table>
+
+<div style="margin-top: 3rem;">
+<h3>Retail Pricing Strategy</h3>
+<p>We maintain a 40% profit margin while keeping prices affordable for local markets:</p>
+<ul style="margin-top: 1rem; list-style: inside;">
+<li>250g pack: ₱120 (Cost: ₱96.50)</li>
+<li>500g pack: ₱220 (Cost: ₱193)</li>
+<li>Gift Set (3x250g): ₱350 (Cost: ₱289.50)</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="faq" class="section faq">
+<h2 class="section-title">Frequently Asked Questions</h2>
+<div class="faq-container">
+<div class="faq-item">
+<div class="faq-question">
+<span>How long does your kalamay last?</span>
+<span>+</span>
+</div>
+<div class="faq-answer">
+<p>Our banana leaf-wrapped kalamay stays fresh for 5-7 days at room temperature and up to 2 weeks when refrigerated. Our commercial packaging extends shelf life to 3 weeks under refrigeration.</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">
+<span>Do you offer nationwide shipping?</span>
+<span>+</span>
+</div>
+<div class="faq-answer">
+<p>Yes! We ship across the Philippines via LBC and J&T Express with specialized packaging to maintain freshness. Provincial orders may take 2-3 days for delivery.</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">
+<span>Are your products vegan-friendly?</span>
+<span>+</span>
+</div>
+<div class="faq-answer">
+<p>All our kalamay products are 100% plant-based, using only coconut milk as dairy substitute. We never use animal products or by-products in our recipes.</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">
+<span>Can I customize orders for special occasions?</span>
+<span>+</span>
+</div>
+<div class="faq-answer">
+<p>Absolutely! We offer custom packaging for birthdays, weddings, and corporate events with 2 weeks advance notice. Minimum order of 20 packs applies for customization.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="section contact">
+<h2 class="section-title">Get In Touch</h2>
+<div class="contact-form">
+<form>
+<div class="form-group">
+<label for="name">Name</label>
+<input type="text" id="name" required>
+</div>
+<div class="form-group">
+<label for="email">Email</label>
+<input type="email" id="email" required>
+</div>
+<div class="form-group">
+<label for="message">Message</label>
+<textarea id="message" required></textarea>
+</div>
+<button type="submit" class="btn">Send Message</button>
+</form>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2023 Buko de Kalamay | Preserving Filipino Culinary Heritage</p>
+<p>123 Balingasag, Purok 4 | +63 912 345 6789</p>
+</footer>
+
+<script>
+// FAQ Toggle
+document.querySelectorAll('.faq-question').forEach(question => {
+question.addEventListener('click', () => {
+const answer = question.nextElementSibling;
+answer.classList.toggle('active');
+
+const icon = question.querySelector('span:last-child');
+icon.textContent = answer.classList.contains('active') ? '-' : '+';
+});
+});
+</script>
+</body>
+</html>
+
